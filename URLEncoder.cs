@@ -12,6 +12,8 @@ namespace URLEncoder
         {
             string ProjectName;
             string ActivityName;
+            string EncodedProjectName = "";
+            string EncodedActivityName = "";
             bool again = true;
             string choice;
 
@@ -45,197 +47,10 @@ namespace URLEncoder
                     }
                 }
 
-                foreach (char input in ProjectName)
-                {
-                    switch (input)
-                    {
-                        case ' ':
-                            {
-                                return "%20";
-                            }
-                        case '>':
-                            {
-                                return "%3E";
-                            }
-                        case '<':
-                            {
-                                return "%3C";
-                            }
-                        case '#':
-                            {
-                                return "%23";
-                            }
-                        case '%':
-                            {
-                                return "%25";
-                            }
-                        case '"':
-                            {
-                                return "%22";
-                            }
-                        case ';':
-                            {
-                                return "%3B";
-                            }
-                        case '/':
-                            {
-                                return "%2F";
-                            }
-                        case '?':
-                            {
-                                return "%3F";
-                            }
-                        case ':':
-                            {
-                                return "%3A";
-                            }
-                        case '@':
-                            {
-                                return "%40";
-                            }
-                        case '&':
-                            {
-                                return "%26";
-                            }
-                        case '-':
-                            {
-                                return "%2D";
-                            }
-                        case '+':
-                            {
-                                return "%2B";
-                            }
-                        case '$':
-                            {
-                                return "%24";
-                            }
-                        case '{':
-                            {
-                                return "%7B";
-                            }
-                        case '}':
-                            {
-                                return "%7D";
-                            }
-                        case '|':
-                            {
-                                return "%7C";
-                            }
-                        case '\':
-                            {
-                                return "%5C";
-                            }
-                        case '^':
-                            {
-                                return "%5E";
-                            }
-                        case '[':
-                            {
-                                return "%5B";
-                            }
-                        case ']':
-                            {
-                                return "%5D";
-                            }
-                    }
-                }
+                EncodeProject(ProjectName);
+                EncodeActivity(ActivityName);
 
-                foreach (char input in ActivityName)
-                {
-                    switch (input)
-                    {
-                        case ' ':
-                            {
-                                return "%20";
-                            }
-                        case '>':
-                            {
-                                return "%3E";
-                            }
-                        case '<':
-                            {
-                                return "%3C";
-                            }
-                        case '#':
-                            {
-                                return "%23";
-                            }
-                        case '%':
-                            {
-                                return "%25";
-                            }
-                        case '"':
-                            {
-                                return "%22";
-                            }
-                        case ';':
-                            {
-                                return "%3B";
-                            }
-                        case '/':
-                            {
-                                return "%2F";
-                            }
-                        case '?':
-                            {
-                                return "%3F";
-                            }
-                        case ':':
-                            {
-                                return "%3A";
-                            }
-                        case '@':
-                            {
-                                return "%40";
-                            }
-                        case '&':
-                            {
-                                return "%26";
-                            }
-                        case '-':
-                            {
-                                return "%2D";
-                            }
-                        case '+':
-                            {
-                                return "%2B";
-                            }
-                        case '$':
-                            {
-                                return "%24";
-                            }
-                        case '{':
-                            {
-                                return "%7B";
-                            }
-                        case '}':
-                            {
-                                return "%7D";
-                            }
-                        case '|':
-                            {
-                                return "%7C";
-                            }
-                        case '\':
-                            {
-                                return "%5C";
-                            }
-                        case '^':
-                            {
-                                return "%5E";
-                            }
-                        case '[':
-                            {
-                                return "%5B";
-                            }
-                        case ']':
-                            {
-                                return "%5D";
-                            }
-                    }
-
-                }
-                Console.WriteLine("https://companyserver.com/content/{0}/files/{1}/{1}Report.pdf", ProjectName, ActivityName);
+                Console.WriteLine("https://companyserver.com/content/{0}/files/{1}/{1}Report.pdf", EncodedProjectName, EncodedActivityName);
                 Console.WriteLine("Would you like to create anther URL? (y/n): ");
                 choice = Console.ReadLine().ToLower();
                 if (choice == "y")
@@ -246,6 +61,248 @@ namespace URLEncoder
                 {
                     again = false;
                 }
+            }
+
+            string EncodeProject(string value)
+            {
+                for (int i = 0; i < ProjectName.Length; i++)
+                {
+                    switch (ProjectName[i])
+                    {
+                        case ' ':
+                            {
+                                EncodedProjectName += "%20";
+                                break;
+                            }
+                        case '>':
+                            {
+                                EncodedProjectName += "%3E";
+                                break;
+                            }
+                        case '<':
+                            {
+                                EncodedProjectName += "%3C";
+                                break;
+                            }
+                        case '#':
+                            {
+                                EncodedProjectName += "%23";
+                                break;
+                            }
+                        case '%':
+                            {
+                                EncodedProjectName += "%25";
+                                break;
+                            }
+                        case '"':
+                            {
+                                EncodedProjectName += "%22";
+                                break;
+                            }
+                        case ';':
+                            {
+                                EncodedProjectName += "%3B";
+                                break;
+                            }
+                        case '/':
+                            {
+                                EncodedProjectName += "%2F";
+                                break;
+                            }
+                        case '?':
+                            {
+                                EncodedProjectName += "%3F";
+                                break;
+                            }
+                        case ':':
+                            {
+                                EncodedProjectName += "%3A";
+                                break;
+                            }
+                        case '@':
+                            {
+                                EncodedProjectName += "%40";
+                                break;
+                            }
+                        case '&':
+                            {
+                                EncodedProjectName += "%26";
+                                break;
+                            }
+                        case '-':
+                            {
+                                EncodedProjectName += "%2D";
+                                break;
+                            }
+                        case '+':
+                            {
+                                EncodedProjectName += "%2B";
+                                break;
+                            }
+                        case '$':
+                            {
+                                EncodedProjectName += "%24";
+                                break;
+                            }
+                        case '{':
+                            {
+                                EncodedProjectName += "%7B";
+                                break;
+                            }
+                        case '}':
+                            {
+                                EncodedProjectName += "%7D";
+                                break;
+                            }
+                        case '|':
+                            {
+                                EncodedProjectName += "%7C";
+                                break;
+                            }
+                        case '^':
+                            {
+                                EncodedProjectName += "%5E";
+                                break;
+                            }
+                        case '[':
+                            {
+                                EncodedProjectName += "%5B";
+                                break;
+                            }
+                        case ']':
+                            {
+                                EncodedProjectName += "%5D";
+                                break;
+                            }
+                        default:
+                            {
+                                EncodedProjectName += ProjectName[i];
+                                break;
+                            }
+                    }
+                }
+                return EncodedProjectName;
+            }
+
+            string EncodeActivity(string value)
+            {
+                for (int i = 0; i < ActivityName.Length; i++)
+                {
+                    switch (ActivityName[i])
+                    {
+                        case ' ':
+                            {
+                                EncodedActivityName += "%20";
+                                break;
+                            }
+                        case '>':
+                            {
+                                EncodedActivityName += "%3E";
+                                break;
+                            }
+                        case '<':
+                            {
+                                EncodedActivityName += "%3C";
+                                break;
+                            }
+                        case '#':
+                            {
+                                EncodedActivityName += "%23";
+                                break;
+                            }
+                        case '%':
+                            {
+                                EncodedActivityName += "%25";
+                                break;
+                            }
+                        case '"':
+                            {
+                                EncodedActivityName += "%22";
+                                break;
+                            }
+                        case ';':
+                            {
+                                EncodedActivityName += "%3B";
+                                break;
+                            }
+                        case '/':
+                            {
+                                EncodedActivityName += "%2F";
+                                break;
+                            }
+                        case '?':
+                            {
+                                EncodedActivityName += "%3F";
+                                break;
+                            }
+                        case ':':
+                            {
+                                EncodedActivityName += "%3A";
+                                break;
+                            }
+                        case '@':
+                            {
+                                EncodedActivityName += "%40";
+                                break;
+                            }
+                        case '&':
+                            {
+                                EncodedActivityName += "%26";
+                                break;
+                            }
+                        case '-':
+                            {
+                                EncodedActivityName += "%2D";
+                                break;
+                            }
+                        case '+':
+                            {
+                                EncodedActivityName += "%2B";
+                                break;
+                            }
+                        case '$':
+                            {
+                                EncodedActivityName += "%24";
+                                break;
+                            }
+                        case '{':
+                            {
+                                EncodedActivityName += "%7B";
+                                break;
+                            }
+                        case '}':
+                            {
+                                EncodedActivityName += "%7D";
+                                break;
+                            }
+                        case '|':
+                            {
+                                EncodedActivityName += "%7C";
+                                break;
+                            }
+                        case '^':
+                            {
+                                EncodedActivityName += "%5E";
+                                break;
+                            }
+                        case '[':
+                            {
+                                EncodedActivityName += "%5B";
+                                break;
+                            }
+                        case ']':
+                            {
+                                EncodedActivityName += "%5D";
+                                break;
+                            }
+                        default:
+                            {
+                                EncodedActivityName += ActivityName[i];
+                                break;
+                            }
+                    }
+                }
+                return EncodedActivityName;
             }
         }
     }
